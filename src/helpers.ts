@@ -6,17 +6,18 @@ const errorCss = `background-color: #ee0000; color: #ffffff; font-weight: bold;`
 
 
 export const observe
-  = <T>(tag: string): Observer<T> => ({
-      next(value: T) {
-        console.log(`%c${tag} next: `, nextCss, value);
-      },
-      error(err: any) {
-        console.log(`%c${tag} error: `, errorCss, err);
-      },
-      complete() {
-        console.log(`%c${tag} completed`, completeCss);
-      }
-    });
+  = (tag: string): Observer<any> =>
+      ({
+        next(value: any) {
+          console.log(`%c${tag} next: `, nextCss, value);
+        },
+        error(err: any) {
+          console.log(`%c${tag} error: `, errorCss, err);
+        },
+        complete() {
+          console.log(`%c${tag} completed`, completeCss);
+        }
+      });
 
 export const pick =
   <T>(...keys: (keyof T)[]) =>

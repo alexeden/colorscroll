@@ -1,10 +1,25 @@
-#color-controls-wrapper {
+.grid {
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
 }
-#color-controls {
-  background-color: #ffffff !important;
+
+.scroll-controls-wrapper {
+  background-color: #ffffff;
+}
+
+.no-border {
+  border: none !important;
+}
+
+.scroll-control:hover {
+  background-color: hsl(48, 29%, 97%) !important;
+}
+.scroll-control {
+  border: none !important;
+}
+.scroll-control * {
+  pointer-events: none;
 }

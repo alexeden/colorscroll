@@ -3,113 +3,129 @@ import { writeToSelector, observe } from './helpers';
 
 window['observe'] = observe;
 
-const createWheelStream =
-  (target: EventTarget) =>
-    Observable.fromEvent(
-      target,
+interface AccumulateValueOptions {
+  min: number;
+  max: number;
+  circular: boolean;
+  startWith: number;
+  normalize: boolean;
+}
+
+type Accumulator = (acc: number, value: number, i: number) => number;
+
+const accumulateValues
+  = (valueSource$: Observable<number>, options: Partial<AccumulateValueOptions> = {}) => {
+      const { min = 0, max = 100, circular = false, startWith = 0, normalize = true } = options;
+      const range = max - min;
+      const accumulator: Accumulator
+        = circular
+          ? (value, change) => {
+              const nextValue = value + change;
+              if(change < 0) {
+                return nextValue < 0 ? (nextValue + range) : nextValue;
+              }
+              else {
+                return nextValue >= max ? (nextValue - range) : nextValue;
+              }
+            }
+          : (value, change) => {
+              const nextValue = value + change;
+              if(change < min) {
+                return nextValue < min ? min : nextValue;
+              }
+              else {
+                return nextValue >= max ? max : nextValue;
+              }
+            };
+
+
+      return valueSource$
+        .startWith(0)
+        .scan(accumulator, startWith)
+        .map(value =>
+          normalize
+            ? (value - min) / range
+            : value
+        );
+    };
+
+const colorControlScroll$
+  = Observable.fromEvent(
+      document.querySelectorAll('.scroll-control'),
       'wheel',
       (e: MouseWheelEvent) => {
         e.preventDefault();
+        e.stopPropagation();
         return e;
       }
     );
 
-const docWheel$ = createWheelStream(document);
-const satWheel$ = createWheelStream(document.querySelector('#sat-control')!);
-const lightWheel$ = createWheelStream(document.querySelector('#light-control')!).map(e => e.deltaY);
+const hueScroll$
+  = colorControlScroll$
+      .filter(e => e.toElement.id === 'hue-control')
+      .map(e => e.deltaX)
+      .filter(dx => dx !== 0);
+
+const satWheel$
+  = colorControlScroll$
+      .filter(e => e.toElement.id === 'sat-control')
+      .map(e => e.deltaY)
+      .filter(dy => dy !== 0);
 
 
-const scrollDeltas$
-  = wheel$
-      .map(e => (
-        {
-          dx: e.deltaX || 0,
-          dy: e.deltaY || 0,
-          shiftKey: e.shiftKey
-        }
-      ));
+const lightWheel$
+  = colorControlScroll$
+      .filter(e => e.toElement.id === 'light-control')
+      .map(e => e.deltaY)
+      .filter(dy => dy !== 0);
 
-const min = 0;
-const max = 5000;
 
-const x$
-  = scrollDeltas$
-      .map(delta => delta.dx)
-      .filter(dx => dx !== 0)
-      .scan(
-        (x, dx) => {
-          const x2 = x + dx;
-          if(dx < min) {
-            return x2 < min ? (x2 + (max-min)) : x2;
-          }
-          else {
-            return x2 >= max ? (x2 - (max-min)) : x2;
-          }
-        },
-        0
-      )
-      .distinctUntilChanged()
-      .map(value => (value - min) / (max - min));
+const hue$
+  = accumulateValues(hueScroll$, {
+      circular: true,
+      startWith: 2100,
+      max: 5000
+    })
+    .map(x => Math.round(360 * x));
 
-const y$
-  = scrollDeltas$
-      .filter(({shiftKey}) => shiftKey === false)
-      .map(delta => delta.dy)
-      .filter(dy => dy !== 0)
-      .scan(
-        (y, dy) => {
-          const y2 = y + dy;
-          if(dy < min) {
-            return y2 < min ? min : y2;
-          }
-          else {
-            return y2 >= max ? max : y2;
-          }
-        },
-        (max - min) / 2
-      )
-      .distinctUntilChanged()
-      .map(value => (value - min) / (max - min));
+const sat$
+  = accumulateValues(satWheel$, {
+      startWith: 4000,
+      max: 5000
+    })
+    .map(y => Math.round(100 * y));
 
-const y2$
-  = scrollDeltas$
-      .filter(({shiftKey}) => shiftKey === true)
-      .map(delta => delta.dy)
-      .filter(dy => dy !== 0)
-      .scan(
-        (y, dy) => {
-          const y2 = y + dy;
-          if(dy < min) {
-            return y2 < min ? min : y2;
-          }
-          else {
-            return y2 >= max ? max : y2;
-          }
-        },
-        (max - min) / 2
-      )
-      .distinctUntilChanged()
-      .map(value => (value - min) / (max - min));
+const light$
+  = accumulateValues(lightWheel$.filter(dy => dy !== 0), {
+      startWith: 2500,
+      max: 5000
+    })
+    .map(y => Math.round(100 * y))
+    .do(writeToSelector('.lightness-value'));
 
-const hue$ = x$.map(x => Math.round(360 * x)).do(writeToSelector('.hue-value'));
-const sat$ = y$.map(y => Math.round(100 * y)).do(writeToSelector('.saturation-value'));
-const light$ = y2$.map(y => Math.round(100 * y)).do(writeToSelector('.lightness-value'));
+const hsl$
+  = Observable.combineLatest(hue$, sat$, light$)
+      .map(([hue, sat, light]) => `hsl(${hue}, ${sat}%, ${light}%)`);
 
-Observable.combineLatest(hue$, light$, sat$, (hue, light, sat) => ({ hue, light, sat }))
-  .subscribe(({hue, light, sat}) =>
-    document.body.style.backgroundColor = `hsl(${hue}, ${sat}%, ${light}%)`
-  );
+hue$.subscribe(writeToSelector('.hue-value'));
+sat$.subscribe(writeToSelector('.saturation-value'));
+
+hsl$
+  .do(writeToSelector('#hsl-string'))
+  .subscribe(hsl => document.body.style.backgroundColor = hsl);
+
+
 
 Observable.interval(25)
-  .mapTo(1)
-  .scan(
-    (hue, dHue) =>
-      hue + dHue > 360
-      ? (hue + dHue - 360)
-      : hue + dHue,
-    0
-  )
+  .map(i => i % 360)
   .subscribe(hue => {
-    const icon = document.querySelector('#colorwheel-icon') as HTMLElement;
+    const icon = document.querySelector('#color-scroll-icon-1') as HTMLElement;
+    icon.style.color = `hsl(${hue}, 100%, 50%)`;
+  });
+
+Observable.interval(35)
+  .map(i => i % 360 * -1)
+  .subscribe(hue => {
+    const icon = document.querySelector('#color-scroll-icon-2') as HTMLElement;
     icon.style.color = `hsl(${hue}, 100%, 50%)`;
   });
