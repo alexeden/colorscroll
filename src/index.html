@@ -9,34 +9,46 @@
   <div class="ui four column middle aligned centered grid" id="color-controls-wrapper">
 
 
-      <div class="ui six wide computer nine wide tablet twelve wide mobile raised column segments" id="color-controls">
+      <div class="ui six wide computer nine wide tablet twelve wide mobile column">
 
-      	<div class="ui segment compact statistic center aligned">
-      		<div class="value"><span class="hue-value"></span>&deg;</div>
-      		<div class="label center aligned">
-      			<i class="chevron left icon"></i>Hue<i class="chevron right icon"></i>
-      		</div>
-      	</div>
+        <div class="ui segments raised" id="color-controls">
 
-      	<div class="ui segments compact horizontal white">
-      		<div class="ui segment compact statistic">
-      			<div class="value"><span class="saturation-value"></span>%</div>
-      			<div class="label">
-      				<i class="chevron up icon"></i><br/>
-      				Saturation<br/>
-      				<i class="chevron down icon"></i>
-      			</div>
-      		</div>
-      		<div class="ui segment disabled compact statistic">
-      			<div class="value"><span class="lightness-value"></span>%</div>
-      			<div class="label">
-      				<i class="chevron up icon"></i><br/>
-      				Lightness<br/>
-      				<i class="chevron down icon"></i>
-      			</div>
-      		</div>
-      	</div>
+          <h1 class="ui top attached huge header">
+            <i id="colorwheel-icon" class="circle icon"></i>
+            <div class="content">ColorWheel</div>
+          </h1>
+        	<div class="ui segment attached center aligned">
+            <div class="ui statistic">
+          		<div class="value"><span class="hue-value"></span>&deg;</div>
+          		<div class="label center aligned">
+          			<i class="resize horizontal icon"></i>Hue<i class="chevron right icon"></i>
+          		</div>
+        		</div>
+        	</div>
 
+        	<div class="ui segments horizontal">
+        		<div class="ui segment attached" id="sat-control">
+              <div class="ui statistic">
+          			<div class="value"><span class="saturation-value"></span>%</div>
+          			<div class="label">
+          				<i class="resize vertical icon"></i><br/>
+          				Saturation<br/>
+          				<i class="chevron down icon"></i>
+          			</div>
+        			</div>
+        		</div>
+        		<div class="ui segment attached" id="light-control">
+              <div class="ui statistic">
+          			<div class="value"><span class="lightness-value"></span>%</div>
+          			<div class="label">
+          				<i class="resize vertical icon"></i><br/>
+          				Lightness<br/>
+          				<i class="chevron down icon"></i>
+          			</div>
+              </div>
+        		</div>
+        	</div>
+        </div>
       </div>
   </div>
 </body>

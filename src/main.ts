@@ -3,15 +3,21 @@ import { writeToSelector, observe } from './helpers';
 
 window['observe'] = observe;
 
-const wheel$
-  = Observable.fromEvent(
-      document,
+const createWheelStream =
+  (target: EventTarget) =>
+    Observable.fromEvent(
+      target,
       'wheel',
       (e: MouseWheelEvent) => {
         e.preventDefault();
         return e;
       }
     );
+
+const docWheel$ = createWheelStream(document);
+const satWheel$ = createWheelStream(document.querySelector('#sat-control')!);
+const lightWheel$ = createWheelStream(document.querySelector('#light-control')!).map(e => e.deltaY);
+
 
 const scrollDeltas$
   = wheel$
@@ -93,3 +99,17 @@ Observable.combineLatest(hue$, light$, sat$, (hue, light, sat) => ({ hue, light,
   .subscribe(({hue, light, sat}) =>
     document.body.style.backgroundColor = `hsl(${hue}, ${sat}%, ${light}%)`
   );
+
+Observable.interval(25)
+  .mapTo(1)
+  .scan(
+    (hue, dHue) =>
+      hue + dHue > 360
+      ? (hue + dHue - 360)
+      : hue + dHue,
+    0
+  )
+  .subscribe(hue => {
+    const icon = document.querySelector('#colorwheel-icon') as HTMLElement;
+    icon.style.color = `hsl(${hue}, 100%, 50%)`;
+  });
