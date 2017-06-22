@@ -1,0 +1,100 @@
+{
+  "rulesDirectory": [
+  ],
+  "rules": {
+    "align": [
+      true,
+      "parameters",
+      "statements",
+      "arguments"
+    ],
+    "comment-format": [
+      true,
+      "check-space"
+    ],
+    "curly": false,
+    "indent": [
+      true,
+      "spaces"
+    ],
+    "no-attribute-parameter-decorator": true,
+    "no-conditional-assignment": true,
+    "no-construct": true,
+    "no-duplicate-variable": true,
+    "no-empty": true,
+    "no-forward-ref": true,
+    "no-input-rename": true,
+    "no-invalid-this": false,
+    "no-output-rename": true,
+    "no-shadowed-variable": true,
+    "no-trailing-whitespace": true,
+    "no-unreachable": true,
+    "no-unused-expression": true,
+    "no-var-keyword": true,
+    "no-unused-variable": [
+      true,
+      {
+        "ignore-pattern": "(^html$)|(^Rx$)|(^R$)|(^tag$)|(^tag\\$$)"
+      }
+    ],
+    "object-literal-sort-keys": false,
+    "one-variable-per-declaration": true,
+    "quotemark": [
+      true,
+      "single",
+      "jsx-double"
+    ],
+    "semicolon": [
+      true,
+      "always",
+      "ignore-interfaces"
+    ],
+    "trailing-comma": [
+      true,
+      {
+        "multiline": "never",
+        "singleline": "never"
+      }
+    ],
+    "triple-equals": true,
+    "typedef-whitespace": [
+      true,
+      {
+        "call-signature": "nospace",
+        "index-signature": "nospace",
+        "parameter": "nospace",
+        "property-declaration": "nospace",
+        "variable-declaration": "nospace"
+      },
+      {
+        "call-signature": "onespace",
+        "index-signature": "onespace",
+        "parameter": "onespace",
+        "property-declaration": "onespace",
+        "variable-declaration": "onespace"
+      }
+    ],
+    "use-host-property-decorator": true,
+    "use-input-property-decorator": true,
+    "use-life-cycle-interface": true,
+    "use-output-property-decorator": true,
+    "use-pipe-transform-interface": true,
+
+
+    "use-input-property-decorator": true,
+    "use-output-property-decorator": true,
+    "use-host-property-decorator": true,
+    "no-attribute-parameter-decorator": true,
+    "no-input-rename": true,
+    "no-output-rename": true,
+    "no-forward-ref": true,
+    "use-life-cycle-interface": true,
+    "use-pipe-transform-interface": true,
+
+    "component-class-suffix": [true, "Component"],
+    "directive-class-suffix": [true, "Directive"],
+    "templates-use-public": true,
+    "no-access-missing-member": true,
+    "invoke-injectable": true
+  }
+}

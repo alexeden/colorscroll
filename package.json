@@ -1,0 +1,33 @@
+{
+  "name": "colorscroll",
+  "version": "1.0.0",
+  "description": "Mini web-app for teaching RxJS",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean && webpack --config webpack.config.js",
+    "clean": "rimraf dist",
+    "start": "webpack-dev-server --inline --config ./webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexeden/colorscroll.git"
+  },
+  "author": "Alex Eden",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexeden/colorscroll/issues"
+  },
+  "homepage": "https://github.com/alexeden/colorscroll#readme",
+  "dependencies": {
+    "rxjs": "^5.4.1"
+  },
+  "devDependencies": {
+    "awesome-typescript-loader": "^3.1.3",
+    "html-webpack-plugin": "^2.28.0",
+    "raw-loader": "^0.5.1",
+    "tslint": "^5.4.3",
+    "typescript": "^2.5.0-dev.20170621",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.5.0"
+  }
+}
