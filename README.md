@@ -1,5 +1,12 @@
-# colorscroll
-Mini web-app for teaching RxJS
+# Getting started
+
+You know the drill:
+
+- $ `git clone https://github.com/alexeden/colorscroll colorscroll`
+- $ `cd colorscroll`
+- $ `npm install`
+- $ `npm start`
+- Open `http://localhost:4000/` in your browser
 
 # Meet your UI
 
@@ -27,3 +34,12 @@ Some classes mark an element as a target for having its content filled-in with a
 
 ![value-elements](https://github.com/alexeden/colorscroll/blob/master/docs/value-elements.png)
 
+# What we're aiming for
+
+When the app is done, it will look something like this:
+
+![final-ui](https://github.com/alexeden/colorscroll/blob/master/docs/color-scroll-on.png)
+
+In action, it'll look something like this:
+
+![in-action](https://github.com/alexeden/colorscroll/blob/master/docs/color-scroll.gif)
