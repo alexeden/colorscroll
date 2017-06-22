@@ -1,13 +1,13 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-// const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-
 
 module.exports = {
   target: 'web',
   context: path.resolve(__dirname, 'src'),
 
   entry: {
+    semantic: './css/semantic.min.css',
+    styles: './css/styles.css',
     vendor: './vendor.ts',
     app: './main.ts'
   },
@@ -19,7 +19,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.ts', '.js', '.html'],
+    extensions: ['.ts', '.js', '.html', '.css'],
     modules: ['node_modules'],
     alias: {
     }
@@ -31,18 +31,11 @@ module.exports = {
         loader: 'raw-loader'
       },
       {
-        test: /\.csv$/,
-        use: {
-          loader: 'csv-loader',
-          options: {
-            dynamicTyping: true,
-            header: true,
-            skipEmptyLines: true
-          }
-        }
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
       },
       {
-        test: /\.tsx?|\.ts?$/,
+        test: /\.ts?$/,
         use: [
           {
             loader: 'awesome-typescript-loader',
@@ -52,48 +45,19 @@ module.exports = {
           }
         ]
       },
-      // {
-      //   test: /\.scss$/,
-      //   loader: ExtractTextPlugin.extract({
-      //     fallback: 'style-loader',
-      //     use: [
-      //       'css-loader',
-      //       'postcss-loader',
-      //       {
-      //         loader: 'sass-loader',
-      //         options: {
-      //           includePaths: [
-      //             path.resolve(__dirname, 'node_modules'),
-      //             // path.resolve(__dirname, 'node_modules', '@material')
-      //           ]
-      //         }
-      //       }
-      //     ]
-      //   })
-      // },
-      // {
-      //   test: /\.(woff|woff2|eot|ttf|otf)$/,
-      //   use: [
-      //     'file-loader'
-      //   ]
-      // }
+      {
+        test: /\.(woff|woff2|eot|ttf|otf|svg|png)$/,
+        use: [
+          'file-loader'
+        ]
+      }
     ]
   },
 
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html'
-    }),
-
-    // new ExtractTextPlugin({
-    //   filename: 'styles.css',
-    //   allChunks: false,
-    //   disable: true
-    // }),
-
-    // new CommonsChunkPlugin({
-    //   names: ['vendor', 'manifest']
-    // })
+    })
   ],
 
   devtool: 'inline-source-map',

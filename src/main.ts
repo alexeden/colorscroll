@@ -1,6 +1,8 @@
 import { Observable } from 'rxjs';
 import { writeToSelector, observe } from './helpers';
 
+window['observe'] = observe;
+
 const wheel$
   = Observable.fromEvent(
       document,
@@ -22,7 +24,7 @@ const scrollDeltas$
       ));
 
 const min = 0;
-const max = 10000;
+const max = 5000;
 
 const x$
   = scrollDeltas$
@@ -32,10 +34,10 @@ const x$
         (x, dx) => {
           const x2 = x + dx;
           if(dx < min) {
-      return x2 < min ? min : x2;
+            return x2 < min ? (x2 + (max-min)) : x2;
           }
           else {
-      return x2 >= max ? max : x2;
+            return x2 >= max ? (x2 - (max-min)) : x2;
           }
         },
         0
@@ -72,10 +74,10 @@ const y2$
         (y, dy) => {
           const y2 = y + dy;
           if(dy < min) {
-      return y2 < min ? min : y2;
+            return y2 < min ? min : y2;
           }
           else {
-      return y2 >= max ? max : y2;
+            return y2 >= max ? max : y2;
           }
         },
         (max - min) / 2
@@ -91,6 +93,3 @@ Observable.combineLatest(hue$, light$, sat$, (hue, light, sat) => ({ hue, light,
   .subscribe(({hue, light, sat}) =>
     document.body.style.backgroundColor = `hsl(${hue}, ${sat}%, ${light}%)`
   );
-
-wheel$.subscribe(observe('wheel$'));
-// wheelShift$.subscribe(console.log);

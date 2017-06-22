@@ -7,7 +7,6 @@ const errorCss = `background-color: #ee0000; color: #ffffff; font-weight: bold;`
 
 export const observe
   = <T>(tag: string): Observer<T> => ({
-      // next: next(tag),
       next(value: T) {
         console.log(`%c${tag} next: `, nextCss, value);
       },
@@ -30,7 +29,7 @@ export const writeToSelector =
   (selector: string) =>
     <T>(content: T): T => {
       Array.from(document.querySelectorAll(selector))
-        .map(elem =>
+        .forEach(elem =>
           Object.assign(elem, { innerText: content })
         );
       return content;
