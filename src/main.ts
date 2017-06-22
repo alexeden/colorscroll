@@ -1,53 +1,8 @@
 import { Observable } from 'rxjs';
-import { writeToSelector, observe } from './helpers';
+import { writeToSelector, observe, Accumulators } from './helpers';
 
+const ScrollSensitity = 0.001;
 window['observe'] = observe;
-
-interface AccumulateValueOptions {
-  min: number;
-  max: number;
-  circular: boolean;
-  startWith: number;
-  normalize: boolean;
-}
-
-type Accumulator = (acc: number, value: number, i: number) => number;
-
-const accumulateValues
-  = (valueSource$: Observable<number>, options: Partial<AccumulateValueOptions> = {}) => {
-      const { min = 0, max = 100, circular = false, startWith = 0, normalize = true } = options;
-      const range = max - min;
-      const accumulator: Accumulator
-        = circular
-          ? (value, change) => {
-              const nextValue = value + change;
-              if(change < 0) {
-                return nextValue < 0 ? (nextValue + range) : nextValue;
-              }
-              else {
-                return nextValue >= max ? (nextValue - range) : nextValue;
-              }
-            }
-          : (value, change) => {
-              const nextValue = value + change;
-              if(change < min) {
-                return nextValue < min ? min : nextValue;
-              }
-              else {
-                return nextValue >= max ? max : nextValue;
-              }
-            };
-
-
-      return valueSource$
-        .startWith(0)
-        .scan(accumulator, startWith)
-        .map(value =>
-          normalize
-            ? (value - min) / range
-            : value
-        );
-    };
 
 const colorControlScroll$
   = Observable.fromEvent(
@@ -60,48 +15,36 @@ const colorControlScroll$
       }
     );
 
-const hueScroll$
-  = colorControlScroll$
-      .filter(e => e.toElement.id === 'hue-control')
-      .map(e => e.deltaX)
-      .filter(dx => dx !== 0);
-
-const satWheel$
-  = colorControlScroll$
-      .filter(e => e.toElement.id === 'sat-control')
-      .map(e => e.deltaY)
-      .filter(dy => dy !== 0);
-
-
-const lightWheel$
-  = colorControlScroll$
-      .filter(e => e.toElement.id === 'light-control')
-      .map(e => e.deltaY)
-      .filter(dy => dy !== 0);
-
+const hueScroll$ = colorControlScroll$.filter(e => e.toElement.id === 'hue-control');
+const satScroll$ = colorControlScroll$.filter(e => e.toElement.id === 'sat-control');
+const lightScroll$ = colorControlScroll$.filter(e => e.toElement.id === 'light-control');
 
 const hue$
-  = accumulateValues(hueScroll$, {
-      circular: true,
-      startWith: 2100,
-      max: 5000
-    })
-    .map(x => Math.round(360 * x));
+  = hueScroll$
+      .map(e => e.deltaX)
+      .filter(dx => dx !== 0)
+      .startWith(0.45 / ScrollSensitity)
+      .map(value => value * ScrollSensitity)
+      .scan(Accumulators.Circular, 0)
+      .map(ratio => Math.round(360 * ratio));
 
 const sat$
-  = accumulateValues(satWheel$, {
-      startWith: 4000,
-      max: 5000
-    })
-    .map(y => Math.round(100 * y));
+  = satScroll$
+      .map(e => e.deltaY)
+      .filter(dy => dy !== 0)
+      .startWith(0.8 / ScrollSensitity)
+      .map(value => value * ScrollSensitity)
+      .scan(Accumulators.Clamped, 0)
+      .map(ratio => Math.round(100 * ratio));
 
 const light$
-  = accumulateValues(lightWheel$.filter(dy => dy !== 0), {
-      startWith: 2500,
-      max: 5000
-    })
-    .map(y => Math.round(100 * y))
-    .do(writeToSelector('.lightness-value'));
+  = lightScroll$
+      .map(e => e.deltaY)
+      .filter(dy => dy !== 0)
+      .startWith(0.5 / ScrollSensitity)
+      .map(value => value * ScrollSensitity)
+      .scan(Accumulators.Clamped, 0)
+      .map(ratio => Math.round(100 * ratio));
 
 const hsl$
   = Observable.combineLatest(hue$, sat$, light$)
@@ -109,12 +52,11 @@ const hsl$
 
 hue$.subscribe(writeToSelector('.hue-value'));
 sat$.subscribe(writeToSelector('.saturation-value'));
+light$.subscribe(writeToSelector('.lightness-value'));
 
 hsl$
   .do(writeToSelector('#hsl-string'))
   .subscribe(hsl => document.body.style.backgroundColor = hsl);
-
-
 
 Observable.interval(25)
   .map(i => i % 360)

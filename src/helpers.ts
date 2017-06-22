@@ -19,13 +19,6 @@ export const observe
         }
       });
 
-export const pick =
-  <T>(...keys: (keyof T)[]) =>
-    (obj: T) =>
-      keys
-        .filter(k => !!obj[k])
-        .reduce((accum, k) => ({ ...accum, [k]: obj[k] }), {});
-
 export const writeToSelector =
   (selector: string) =>
     <T>(content: T): T => {
@@ -35,3 +28,20 @@ export const writeToSelector =
         );
       return content;
     };
+
+
+export const Accumulators: Record<'Circular' | 'Clamped', (acc: number, value: number, i: number) => number> =
+  {
+    Circular(value, change) {
+      const nextValue = value + change;
+      return change < 0
+        ? (nextValue < 0  ? (nextValue + 1) : nextValue)
+        : (nextValue >= 1 ? (nextValue - 1) : nextValue);
+    },
+    Clamped(value, change) {
+      const nextValue = value + change;
+      return change < 0
+        ? (nextValue <  0 ? 0 : nextValue)
+        : (nextValue >= 1 ? 1 : nextValue);
+    }
+  };
