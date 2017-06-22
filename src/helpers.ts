@@ -5,7 +5,7 @@ const completeCss = `color: #333; background-color: #AEEA00; font-weight: bold;`
 const errorCss = `background-color: #ee0000; color: #ffffff; font-weight: bold;`;
 
 
-export const observe
+export const observeInConsole
   = (tag: string): Observer<any> =>
       ({
         next(value: any) {

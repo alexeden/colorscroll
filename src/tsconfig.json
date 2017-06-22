@@ -14,7 +14,7 @@
     "importHelpers": false,
     "noImplicitAny": true,
     "noImplicitThis": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "suppressImplicitAnyIndexErrors": true,
     "paths": {
       "colorscroll/*": [
