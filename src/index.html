@@ -7,55 +7,86 @@
 </head>
 <body>
   <div class="ui three column middle aligned centered grid">
+    <div class="ui eight wide computer ten wide tablet twelve wide mobile column">
+      <div class="ui segments raised scroll-controls-wrapper">
 
+        <h1 class="ui top attached huge header center aligned no-border secondary">
+          <!--
+            Icon 1
+          -->
+          <i id="color-scroll-icon-1" class="chevron circle up icon"></i>
+          <!--
+            Icon 2
+          -->
+          <i id="color-scroll-icon-2" class="chevron circle down icon"></i>
+          <div class="content">ColorScroll</div>
+        </h1>
 
-      <div class="ui eight wide computer ten wide tablet twelve wide mobile column">
+        <!--
+          Hue scroll zone
+        -->
+      	<div
+          class="ui segment attached padded center aligned scroll-control"
+          id="hue-control">
+          <div class="ui statistic">
+        		<div class="value">
+              <i class="long arrow left icon"></i>
+              <!--
+                Hue value
+              -->
+              <span class="hue-value"> ? </span>&deg;
+              <i class="long arrow right icon"></i>
+            </div>
+        		<div class="label center aligned">Hue</div>
+      		</div>
+      	</div>
 
-        <div class="ui segments raised scroll-controls-wrapper">
-
-          <h1 class="ui top attached huge header center aligned no-border secondary">
-            <i id="color-scroll-icon-1" class="chevron circle up icon"></i>
-            <i id="color-scroll-icon-2" class="chevron circle down icon"></i>
-            <div class="content">ColorScroll</div>
-          </h1>
-
-        	<div class="ui segment attached padded center aligned scroll-control" id="hue-control">
+      	<div class="ui segments horizontal no-border">
+          <!--
+            Saturation scroll zone
+          -->
+      		<div
+            class="ui segment attached very padded center aligned scroll-control"
+            id="sat-control">
             <div class="ui statistic">
-          		<div class="value">
-                <i class="long arrow left icon"></i>
-                <span class="hue-value"> ? </span>&deg;
-                <i class="long arrow right icon"></i>
+        			<div class="value">
+                <i class="resize vertical icon"></i>
+                <!--
+                  Saturation value
+                -->
+                <span class="saturation-value"> ? </span>%
               </div>
-          		<div class="label center aligned">Hue</div>
-        		</div>
-        	</div>
+        			<div class="label">Saturation</div>
+      			</div>
+      		</div>
 
-        	<div class="ui segments horizontal no-border">
-        		<div class="ui segment attached very padded center aligned scroll-control" id="sat-control">
-              <div class="ui statistic">
-          			<div class="value">
-                  <i class="resize vertical icon"></i>
-                  <span class="saturation-value"> ? </span>%
-                </div>
-          			<div class="label">Saturation</div>
-        			</div>
-        		</div>
-        		<div class="ui segment attached very padded center aligned scroll-control" id="light-control">
-              <div class="ui statistic">
-          			<div class="value">
-                  <i class="resize vertical icon"></i>
-                  <span class="lightness-value"> ? </span>%
-                </div>
-          			<div class="label">Lightness</div>
+          <!--
+            Lightness scroll zone
+          -->
+      		<div
+            class="ui segment attached very padded center aligned scroll-control"
+            id="light-control">
+            <div class="ui statistic">
+        			<div class="value">
+                <i class="resize vertical icon"></i>
+                <!--
+                  Lightness value
+                -->
+                <span class="lightness-value"> ? </span>%
               </div>
-        		</div>
-        	</div>
+        			<div class="label">Lightness</div>
+            </div>
+      		</div>
+      	</div>
 
-          <div class="ui segment attached bottom center aligned secondary no-border">
-            <code id="hsl-string">hsl(?, ?, ?)</code>
-          </div>
-
+        <div class="ui segment attached bottom center aligned secondary no-border">
+          <!--
+            HSL string value
+          -->
+          <code id="hsl-string">hsl(?, ?, ?)</code>
+        </div>
       </div>
+    </div>
   </div>
 </body>
 </html>
