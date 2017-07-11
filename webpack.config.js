@@ -1,5 +1,9 @@
 const path = require('path');
+
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 
 module.exports = {
   target: 'web',
@@ -8,7 +12,10 @@ module.exports = {
   entry: {
     semantic: './css/semantic.min.css',
     styles: './css/styles.css',
-    vendor: './vendor.ts',
+    vendor: [
+      'rxjs'
+    ],
+      // './vendor.ts',
     app: './main.ts'
   },
 
@@ -57,6 +64,13 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index.html'
+    }),
+    new CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: Infinity
+    }),
+    new CircularDependencyPlugin({
+      exclude: /node_modules/g
     })
   ],
 
@@ -64,6 +78,11 @@ module.exports = {
 
   devServer: {
     port: 4000,
-    historyApiFallback: true
+    historyApiFallback: true,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
+      'Access-Control-Allow-Headers': 'X-Requested-With, content-type, Authorization'
+    }
   }
 };
