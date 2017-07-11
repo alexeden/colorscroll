@@ -19,7 +19,7 @@
             Icon 2
           -->
           <i id="color-scroll-icon-2" class="chevron circle down icon"></i>
-          <div class="content">ColorScroll</div>
+          <div id="color-scroll-icon-text" class="content">ColorScroll</div>
         </h1>
 
         <!--
@@ -79,11 +79,15 @@
       		</div>
       	</div>
 
+        <div id="color-details-widget" class="ui segment attached bottom center aligned secondary no-border">
+        </div>
+
         <div class="ui segment attached bottom center aligned secondary no-border">
           <!--
             HSL string value
           -->
-          <code id="hsl-string">hsl(?, ?, ?)</code>
+          <code class="hsl-string">hsl(?, ?, ?)</code>
+          <code class="hex-string">#??????</code>
           <h1>
             <pre class="ui huge" id="code-output">&lt;code output can go here&gt;</pre>
           </h1>
