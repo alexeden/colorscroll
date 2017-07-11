@@ -1,5 +1,4 @@
 import { Observable } from 'rxjs';
-import { observeInConsole, writeToSelector } from '../helpers';
 
 /*
   This file exports 3 reactive variables:
