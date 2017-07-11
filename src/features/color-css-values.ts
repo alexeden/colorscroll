@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs';
+import { HSLtoRGB, RGBtoHEX, HSL } from '../shared';
 import { hue$, sat$, light$ } from './hsl-values';
 
 /*
@@ -12,3 +13,12 @@ import { hue$, sat$, light$ } from './hsl-values';
 export const hslString$
   = Observable.combineLatest(hue$, sat$, light$)
       .map(([hue, sat, light]) => `hsl(${hue}, ${sat}%, ${light}%)`);
+
+export const hexString$
+    = Observable.combineLatest(
+        hue$, sat$, light$,
+        (hue, saturation, lightness): HSL => ({ hue, saturation, lightness })
+      )
+      .map(HSLtoRGB)
+      .map(RGBtoHEX)
+      .map(hex => `#${hex}`.toUpperCase());

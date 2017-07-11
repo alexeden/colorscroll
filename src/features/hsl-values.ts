@@ -1,5 +1,4 @@
-import { Observable } from 'rxjs';
-import { writeToSelector, observeInConsole, Accumulators } from '../helpers';
+import { Accumulators } from '../shared/helpers';
 import { hueScroll$, satScroll$, lightScroll$ } from './color-control-scrolls';
 
 /*

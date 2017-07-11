@@ -19,7 +19,7 @@ import { Observable } from 'rxjs';
 
 // export const hueScroll$
 //   = Observable.fromEvent(
-//       document.querySelectorAll('.scroll-control'),
+//       document.querySelectorAll('#hue-control'),
 //       'wheel',
 //       (e: MouseWheelEvent) => {
 //         e.preventDefault();
@@ -30,7 +30,7 @@ import { Observable } from 'rxjs';
 //
 // export const satScroll$
 //   = Observable.fromEvent(
-//       document.querySelectorAll('#hue-control'),
+//       document.querySelectorAll('#sat-control'),
 //       'wheel',
 //       (e: MouseWheelEvent) => {
 //         e.preventDefault();
