@@ -1,1 +1,1 @@
-export * from './color-finder.widget';
+export * from './color-details.widget';
