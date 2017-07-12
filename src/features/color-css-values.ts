@@ -17,7 +17,7 @@ export const hslString$
 export const hexString$
     = Observable.combineLatest(
         hue$, sat$, light$,
-        (hue, saturation, lightness): HSL => ({ hue, saturation, lightness })
+        (h, s, l): HSL => ({ h, s, l })
       )
       .map(HSLtoRGB)
       .map(RGBtoHEX)

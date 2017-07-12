@@ -1,27 +1,20 @@
 import { Observable } from 'rxjs';
 import { Selectors, replaceContentAtSelector, htmlFromString, observeInConsole, writeToSelector } from '../shared';
-import { ColourLovers } from '../api';
+import { TheColorApi } from '../api';
 import { hexString$ } from '../features';
 
 const widgetSelectors = {
   colorName: '.color-name'
 };
 
-const hex$ = hexString$.debounceTime(2000).share();
-
-// const colorDetails$ = hex$.switchMap(ColourLovers.getColor);
+const hex$ = hexString$.debounceTime(1000).share();
 
 const colorName$
   = hex$
       .switchMap(hex =>
         Observable.concat(
           Observable.of('Getting color details'),
-          ColourLovers.getColor(hex)
-            .map(colors =>
-              colors.length > 0
-                ? colors[0].title
-                : 'Color not found'
-            )
+          TheColorApi.getColorScheme(hex).map(color => color)
         )
       );
 
@@ -35,6 +28,4 @@ const colorDetailsElement = htmlFromString(`
 
 `);
 
-
-console.log(colorDetailsElement);
 export const ColorFinderWidget = replaceContentAtSelector(Selectors.colorDetailsWidget, colorDetailsElement);

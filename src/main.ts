@@ -1,7 +1,7 @@
 import * as Rx from 'rxjs';
 import { Observable } from 'rxjs';
 import { Selectors, writeToSelector, observeInConsole } from './shared';
-import { changingHue1$, changingHue2$, hue$, sat$, light$, hslString$, hexString$ } from './features';
+import { changingHue1$, changingHue2$, hue$, sat$, light$, hslString$, hexString$, gradient$ } from './features';
 import { ColorFinderWidget } from './widgets';
 
 /* Globalize helpers */
@@ -53,10 +53,8 @@ hue$.subscribe(hue => writeToSelector(Selectors.hueValue, hue));
 sat$.subscribe(sat => writeToSelector(Selectors.saturationValue, sat));
 light$.subscribe(light => writeToSelector(Selectors.lightnessValue, light));
 
-//
-hslString$
-  .map(hslString => writeToSelector(Selectors.hslString, hslString))
-  .subscribe(hsl => document.body.style.backgroundColor = hsl);
+hslString$.subscribe(hslString => writeToSelector(Selectors.hslString, hslString));
+gradient$.subscribe(gradient => document.body.style.background = gradient);
 
 hexString$.subscribe(hexString => writeToSelector(Selectors.hexString, hexString));
 
