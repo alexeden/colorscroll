@@ -1,0 +1,516 @@
+{
+  "mode": "monochrome",
+  "count": "5",
+  "colors": [
+    {
+      "hex": {
+        "value": "#0E7153",
+        "clean": "0E7153"
+      },
+      "rgb": {
+        "fraction": {
+          "r": 0.054901960784313725,
+          "g": 0.44313725490196076,
+          "b": 0.3254901960784314
+        },
+        "r": 14,
+        "g": 113,
+        "b": 83,
+        "value": "rgb(14, 113, 83)"
+      },
+      "hsl": {
+        "fraction": {
+          "h": 0.4494949494949495,
+          "s": 0.7795275590551181,
+          "l": 0.24901960784313726
+        },
+        "h": 162,
+        "s": 78,
+        "l": 25,
+        "value": "hsl(162, 78%, 25%)"
+      },
+      "hsv": {
+        "fraction": {
+          "h": 0.4494949494949495,
+          "s": 0.8761061946902654,
+          "v": 0.44313725490196076
+        },
+        "value": "hsv(162, 88%, 44%)",
+        "h": 162,
+        "s": 88,
+        "v": 44
+      },
+      "name": {
+        "value": "Jewel",
+        "closest_named_hex": "#126B40",
+        "exact_match_name": false,
+        "distance": 1121
+      },
+      "cmyk": {
+        "fraction": {
+          "c": 0.8761061946902654,
+          "m": 0,
+          "y": 0.2654867256637169,
+          "k": 0.5568627450980392
+        },
+        "value": "cmyk(88, 0, 27, 56)",
+        "c": 88,
+        "m": 0,
+        "y": 27,
+        "k": 56
+      },
+      "XYZ": {
+        "fraction": {
+          "X": 0.239858431372549,
+          "Y": 0.3521043137254901,
+          "Z": 0.36326
+        },
+        "value": "XYZ(24, 35, 36)",
+        "X": 24,
+        "Y": 35,
+        "Z": 36
+      },
+      "image": {
+        "bare": "http://www.thecolorapi.com/id?format=svg&named=false&hex=0E7153",
+        "named": "http://www.thecolorapi.com/id?format=svg&hex=0E7153"
+      },
+      "contrast": {
+        "value": "#FFFFFF"
+      },
+      "_links": {
+        "self": {
+          "href": "/id?hex=0E7153"
+        }
+      },
+      "_embedded": {}
+    },
+    {
+      "hex": {
+        "value": "#139F75",
+        "clean": "139F75"
+      },
+      "rgb": {
+        "fraction": {
+          "r": 0.07450980392156863,
+          "g": 0.6235294117647059,
+          "b": 0.4588235294117647
+        },
+        "r": 19,
+        "g": 159,
+        "b": 117,
+        "value": "rgb(19, 159, 117)"
+      },
+      "hsl": {
+        "fraction": {
+          "h": 0.44999999999999996,
+          "s": 0.7865168539325844,
+          "l": 0.34901960784313724
+        },
+        "h": 162,
+        "s": 79,
+        "l": 35,
+        "value": "hsl(162, 79%, 35%)"
+      },
+      "hsv": {
+        "fraction": {
+          "h": 0.44999999999999996,
+          "s": 0.8805031446540881,
+          "v": 0.6235294117647059
+        },
+        "value": "hsv(162, 88%, 62%)",
+        "h": 162,
+        "s": 88,
+        "v": 62
+      },
+      "name": {
+        "value": "Emerald",
+        "closest_named_hex": "#14A989",
+        "exact_match_name": false,
+        "distance": 585
+      },
+      "cmyk": {
+        "fraction": {
+          "c": 0.8805031446540881,
+          "m": 0,
+          "y": 0.2641509433962265,
+          "k": 0.3764705882352941
+        },
+        "value": "cmyk(88, 0, 26, 38)",
+        "c": 88,
+        "m": 0,
+        "y": 26,
+        "k": 38
+      },
+      "XYZ": {
+        "fraction": {
+          "X": 0.3365196078431373,
+          "Y": 0.49491607843137253,
+          "Z": 0.5118745098039216
+        },
+        "value": "XYZ(34, 49, 51)",
+        "X": 34,
+        "Y": 49,
+        "Z": 51
+      },
+      "image": {
+        "bare": "http://www.thecolorapi.com/id?format=svg&named=false&hex=139F75",
+        "named": "http://www.thecolorapi.com/id?format=svg&hex=139F75"
+      },
+      "contrast": {
+        "value": "#000000"
+      },
+      "_links": {
+        "self": {
+          "href": "/id?hex=139F75"
+        }
+      },
+      "_embedded": {}
+    },
+    {
+      "hex": {
+        "value": "#18CE97",
+        "clean": "18CE97"
+      },
+      "rgb": {
+        "fraction": {
+          "r": 0.09411764705882353,
+          "g": 0.807843137254902,
+          "b": 0.592156862745098
+        },
+        "r": 24,
+        "g": 206,
+        "b": 151,
+        "value": "rgb(24, 206, 151)"
+      },
+      "hsl": {
+        "fraction": {
+          "h": 0.4496336996336997,
+          "s": 0.7913043478260869,
+          "l": 0.45098039215686275
+        },
+        "h": 162,
+        "s": 79,
+        "l": 45,
+        "value": "hsl(162, 79%, 45%)"
+      },
+      "hsv": {
+        "fraction": {
+          "h": 0.4496336996336997,
+          "s": 0.883495145631068,
+          "v": 0.807843137254902
+        },
+        "value": "hsv(162, 88%, 81%)",
+        "h": 162,
+        "s": 88,
+        "v": 81
+      },
+      "name": {
+        "value": "Caribbean Green",
+        "closest_named_hex": "#1CD3A2",
+        "exact_match_name": false,
+        "distance": 274
+      },
+      "cmyk": {
+        "fraction": {
+          "c": 0.883495145631068,
+          "m": 0,
+          "y": 0.2669902912621359,
+          "k": 0.19215686274509802
+        },
+        "value": "cmyk(88, 0, 27, 19)",
+        "c": 88,
+        "m": 0,
+        "y": 27,
+        "k": 19
+      },
+      "XYZ": {
+        "fraction": {
+          "X": 0.43458313725490194,
+          "Y": 0.6405325490196078,
+          "Z": 0.6609564705882353
+        },
+        "value": "XYZ(43, 64, 66)",
+        "X": 43,
+        "Y": 64,
+        "Z": 66
+      },
+      "image": {
+        "bare": "http://www.thecolorapi.com/id?format=svg&named=false&hex=18CE97",
+        "named": "http://www.thecolorapi.com/id?format=svg&hex=18CE97"
+      },
+      "contrast": {
+        "value": "#000000"
+      },
+      "_links": {
+        "self": {
+          "href": "/id?hex=18CE97"
+        }
+      },
+      "_embedded": {}
+    },
+    {
+      "hex": {
+        "value": "#30E8B1",
+        "clean": "30E8B1"
+      },
+      "rgb": {
+        "fraction": {
+          "r": 0.18823529411764706,
+          "g": 0.9098039215686274,
+          "b": 0.6941176470588235
+        },
+        "r": 48,
+        "g": 232,
+        "b": 177,
+        "value": "rgb(48, 232, 177)"
+      },
+      "hsl": {
+        "fraction": {
+          "h": 0.4501811594202899,
+          "s": 0.7999999999999998,
+          "l": 0.5490196078431373
+        },
+        "h": 162,
+        "s": 80,
+        "l": 55,
+        "value": "hsl(162, 80%, 55%)"
+      },
+      "hsv": {
+        "fraction": {
+          "h": 0.4501811594202899,
+          "s": 0.7931034482758621,
+          "v": 0.9098039215686274
+        },
+        "value": "hsv(162, 79%, 91%)",
+        "h": 162,
+        "s": 79,
+        "v": 91
+      },
+      "name": {
+        "value": "Caribbean Green",
+        "closest_named_hex": "#1CD3A2",
+        "exact_match_name": false,
+        "distance": 2118
+      },
+      "cmyk": {
+        "fraction": {
+          "c": 0.7931034482758621,
+          "m": 0,
+          "y": 0.23706896551724138,
+          "k": 0.09019607843137256
+        },
+        "value": "cmyk(79, 0, 24, 9)",
+        "c": 79,
+        "m": 0,
+        "y": 24,
+        "k": 9
+      },
+      "XYZ": {
+        "fraction": {
+          "X": 0.5282623529411765,
+          "Y": 0.7408258823529411,
+          "Z": 0.7718403921568627
+        },
+        "value": "XYZ(53, 74, 77)",
+        "X": 53,
+        "Y": 74,
+        "Z": 77
+      },
+      "image": {
+        "bare": "http://www.thecolorapi.com/id?format=svg&named=false&hex=30E8B1",
+        "named": "http://www.thecolorapi.com/id?format=svg&hex=30E8B1"
+      },
+      "contrast": {
+        "value": "#000000"
+      },
+      "_links": {
+        "self": {
+          "href": "/id?hex=30E8B1"
+        }
+      },
+      "_embedded": {}
+    },
+    {
+      "hex": {
+        "value": "#5DEEC2",
+        "clean": "5DEEC2"
+      },
+      "rgb": {
+        "fraction": {
+          "r": 0.36470588235294116,
+          "g": 0.9333333333333333,
+          "b": 0.7607843137254902
+        },
+        "r": 93,
+        "g": 238,
+        "b": 194,
+        "value": "rgb(93, 238, 194)"
+      },
+      "hsl": {
+        "fraction": {
+          "h": 0.4494252873563218,
+          "s": 0.8100558659217877,
+          "l": 0.6490196078431373
+        },
+        "h": 162,
+        "s": 81,
+        "l": 65,
+        "value": "hsl(162, 81%, 65%)"
+      },
+      "hsv": {
+        "fraction": {
+          "h": 0.4494252873563218,
+          "s": 0.6092436974789915,
+          "v": 0.9333333333333333
+        },
+        "value": "hsv(162, 61%, 93%)",
+        "h": 162,
+        "s": 61,
+        "v": 93
+      },
+      "name": {
+        "value": "Turquoise Blue",
+        "closest_named_hex": "#6CDAE7",
+        "exact_match_name": false,
+        "distance": 3662
+      },
+      "cmyk": {
+        "fraction": {
+          "c": 0.6092436974789915,
+          "m": 0,
+          "y": 0.184873949579832,
+          "k": 0.06666666666666665
+        },
+        "value": "cmyk(61, 0, 18, 7)",
+        "c": 61,
+        "m": 0,
+        "y": 18,
+        "k": 7
+      },
+      "XYZ": {
+        "fraction": {
+          "X": 0.6214862745098039,
+          "Y": 0.7999850980392157,
+          "Z": 0.8414176470588235
+        },
+        "value": "XYZ(62, 80, 84)",
+        "X": 62,
+        "Y": 80,
+        "Z": 84
+      },
+      "image": {
+        "bare": "http://www.thecolorapi.com/id?format=svg&named=false&hex=5DEEC2",
+        "named": "http://www.thecolorapi.com/id?format=svg&hex=5DEEC2"
+      },
+      "contrast": {
+        "value": "#000000"
+      },
+      "_links": {
+        "self": {
+          "href": "/id?hex=5DEEC2"
+        }
+      },
+      "_embedded": {}
+    }
+  ],
+  "seed": {
+    "hex": {
+      "value": "#19E6A8",
+      "clean": "19E6A8"
+    },
+    "rgb": {
+      "fraction": {
+        "r": 0.09803921568627451,
+        "g": 0.9019607843137255,
+        "b": 0.6588235294117647
+      },
+      "r": 25,
+      "g": 230,
+      "b": 168,
+      "value": "rgb(25, 230, 168)"
+    },
+    "hsl": {
+      "fraction": {
+        "h": 0.44959349593495934,
+        "s": 0.803921568627451,
+        "l": 0.5
+      },
+      "h": 162,
+      "s": 80,
+      "l": 50,
+      "value": "hsl(162, 80%, 50%)"
+    },
+    "hsv": {
+      "fraction": {
+        "h": 0.44959349593495934,
+        "s": 0.891304347826087,
+        "v": 0.9019607843137255
+      },
+      "value": "hsv(162, 89%, 90%)",
+      "h": 162,
+      "s": 89,
+      "v": 90
+    },
+    "name": {
+      "value": "Caribbean Green",
+      "closest_named_hex": "#1CD3A2",
+      "exact_match_name": false,
+      "distance": 742
+    },
+    "cmyk": {
+      "fraction": {
+        "c": 0.891304347826087,
+        "m": 0,
+        "y": 0.26956521739130435,
+        "k": 0.0980392156862745
+      },
+      "value": "cmyk(89, 0, 27, 10)",
+      "c": 89,
+      "m": 0,
+      "y": 27,
+      "k": 10
+    },
+    "XYZ": {
+      "fraction": {
+        "X": 0.48189019607843137,
+        "Y": 0.7134925490196078,
+        "Z": 0.7356176470588236
+      },
+      "value": "XYZ(48, 71, 74)",
+      "X": 48,
+      "Y": 71,
+      "Z": 74
+    },
+    "image": {
+      "bare": "http://www.thecolorapi.com/id?format=svg&named=false&hex=19E6A8",
+      "named": "http://www.thecolorapi.com/id?format=svg&hex=19E6A8"
+    },
+    "contrast": {
+      "value": "#000000"
+    },
+    "_links": {
+      "self": {
+        "href": "/id?hex=19E6A8"
+      }
+    },
+    "_embedded": {}
+  },
+  "image": {
+    "bare": "http://www.thecolorapi.com/scheme?format=svg&named=false&hex=19E6A8&mode=monochrome&count=5",
+    "named": "http://www.thecolorapi.com/scheme?format=svg&hex=19E6A8&mode=monochrome&count=5"
+  },
+  "_links": {
+    "self": "/scheme?hex=19E6A8&mode=monochrome&count=5",
+    "schemes": {
+      "monochrome": "/scheme?hex=19E6A8&mode=monochrome&count=5",
+      "monochrome-dark": "/scheme?hex=19E6A8&mode=monochrome-dark&count=5",
+      "monochrome-light": "/scheme?hex=19E6A8&mode=monochrome-light&count=5",
+      "analogic": "/scheme?hex=19E6A8&mode=analogic&count=5",
+      "complement": "/scheme?hex=19E6A8&mode=complement&count=5",
+      "analogic-complement": "/scheme?hex=19E6A8&mode=analogic-complement&count=5",
+      "triad": "/scheme?hex=19E6A8&mode=triad&count=5",
+      "quad": "/scheme?hex=19E6A8&mode=quad&count=5"
+    }
+  },
+  "_embedded": {}
+}

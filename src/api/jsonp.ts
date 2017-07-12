@@ -2,13 +2,17 @@ import { Observable } from 'rxjs';
 
 let id = 0;
 
+
 export const JSONP =
-  <T>(url: string): Observable<T> => {
+  <T>(url: string, callbackParamKey = 'jsonCallback', queryParams: {[param: string]: string|number} = {}): Observable<T> => {
+    const callbackId = `jsonp${id++}`;
+    const callbackParam = `${callbackParamKey}=${callbackId}`;
+    const queryParamString = Object.entries(queryParams).map(([k, v]) => `${k}=${v}`).join('&');
+    const paramString = [queryParamString, callbackParam].join('&');
+    const src = `${url}?${paramString}`;
+    const script = Object.assign(document.createElement('script'), { src });
+
     const promise = new Promise<T>((resolve, reject) => {
-      const jsonpId = id++;
-      const callbackId = `jsonp${jsonpId}`;
-      const src = `${url}?format=json&jsonCallback=${callbackId}`;
-      const script = Object.assign(document.createElement('script'), { id: jsonpId, src });
 
       window[callbackId] = (response: T) => {
         script.remove();
