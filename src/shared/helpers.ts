@@ -19,6 +19,13 @@ export const observeInConsole
         }
       });
 
+export const isHtmlElement =
+  (x: any): x is HTMLElement => {
+    return x !== null
+      && typeof x === 'object'
+      && typeof x.tagName === 'string';
+  };
+
 export const htmlFromString: (innerHTML: string) => HTMLElement =
   innerHTML => {
     const template = document.createElement('template');
@@ -46,19 +53,36 @@ export const writeToSelector =
     return content;
   };
 
+type ElementSwapFunction = (parent: HTMLElement, children: HTMLElement[], newChild: HTMLElement) => void;
+
+const defaultSwapFunction: ElementSwapFunction =
+  (parent, children, newChild) => {
+    children.forEach(child => child.remove());
+    parent.appendChild(newChild);
+  };
+
 export const replaceContentAtSelector =
-  <T extends HTMLElement>(selector: string, content: T): T => {
-    const selection = document.querySelectorAll(selector);
+  (
+    parentSelector: string,
+    newElementOrString: HTMLElement | string,
+    swapFunction = defaultSwapFunction
+  ): HTMLElement => {
+    const newElement = isHtmlElement(newElementOrString) ? newElementOrString : htmlFromString(newElementOrString);
+    const selection = document.querySelectorAll(parentSelector);
     if(selection.length < 1) {
-      throw new Error(`Couldn't find any elements using the selector "${selector}"`);
+      throw new Error(`Couldn't find any elements using the selector "${parentSelector}"`);
     }
 
     Array.from(selection)
-      .forEach(elem => {
-        Array.from(elem.children).forEach((child: HTMLElement) => child.remove());
-        elem.appendChild(content);
+      .forEach((parentElement: HTMLElement) => {
+        const children = (Array.from(parentElement.children) || []) as HTMLElement[];
+        swapFunction(
+          parentElement, // The parent element
+          children, // The parent element's children
+          newElement
+        );
       });
-    return content;
+    return newElement;
   };
 
 

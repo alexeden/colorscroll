@@ -1,49 +1,26 @@
 import { Observable } from 'rxjs';
-import { Selectors, replaceContentAtSelector, htmlFromString/*, observeInConsole*/ } from '../shared';
+import { htmlFromString } from '../shared';
 import { TheColorApi, Color } from '../api';
 import { hexString$ } from '../features';
-//
-// const widgetSelectors = {
-//   colorName: '.color-name'
-// };
 
-const hex$ = hexString$.debounceTime(1000).share();
+const colorDetails$: Observable<Color> =
+  hexString$.debounceTime(1000)
+    .switchMap(hex => TheColorApi.getColor(hex))
+    .share();
 
-// enum Status {
-//   Loading
-// }
-//
-// interface ColorDetails {
-//   status: Status;
-// }
+const hexMatchesNamedColor$ = colorDetails$.map(details => details.name.exact_match_name);
 
-const colorDetails$: Observable<Color>
-  = hex$
-      .switchMap(hex =>
-        TheColorApi.getColor(hex)
-        // Observable.concat(
-        //   // Observable.of('Getting color details'),
-        // )
-      );
-
-
-colorDetails$
-  .map(color => `
-    <div class="ui relaxed">
+export const ColorDetailsWidget: Observable<HTMLElement> =
+  Observable.combineLatest(
+    colorDetails$,
+    hexMatchesNamedColor$
+  )
+  .map(([color, matches]) => `
+    <div class="">
+      <h1 class="header">
         <img class="ui avatar image" src="${color.image.bare}">
-        <span class="content">
-          <h1 class="header">${color.name.value}</h1>
-          <div class="description">Updated 10 mins ago</div>
-        </span>
+        <span>${color.name.value} ${!matches ? '' : '<span>(exact match!)</span>'}</span>
+      </h1>
     </div>
   `)
-  .map(htmlString => htmlFromString(htmlString))
-  .subscribe(html => {
-    replaceContentAtSelector(Selectors.colorDetailsWidget, html);
-  });
-
-const colorDetailsElement = htmlFromString(`
-  <h1>hi</h1>
-`);
-
-export const ColorFinderWidget = replaceContentAtSelector(Selectors.colorDetailsWidget, colorDetailsElement);
+  .map(htmlString => htmlFromString(htmlString));
