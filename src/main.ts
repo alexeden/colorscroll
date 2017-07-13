@@ -1,7 +1,7 @@
 import * as Rx from 'rxjs';
 import { Observable } from 'rxjs';
 import { Selectors, writeToSelector, observeInConsole } from './shared';
-import { changingHue1$, changingHue2$, hue$, sat$, light$, hslString$, hexString$, gradient$ } from './features';
+import { changingHue1$, hue$, sat$, light$, hslString$, hexString$, gradient$ } from './features';
 import { ColorFinderWidget } from './widgets';
 
 /* Globalize helpers */
@@ -38,15 +38,15 @@ console.log(ColorFinderWidget);
 /* Create the color-changing icons */
 // Icon DOM elements
 const icon1 = document.querySelector(Selectors.icon1) as HTMLElement;
-const icon2 = document.querySelector(Selectors.icon2) as HTMLElement;
+// const icon2 = document.querySelector(Selectors.icon2) as HTMLElement;
 
 // Icon DOM element clicks
 const iconClicks1$ = Observable.fromEvent(icon1, 'click');
-const iconClicks2$ = Observable.fromEvent(icon2, 'click');
+// const iconClicks2$ = Observable.fromEvent(icon2, 'click');
 
 // Activate the icons
 changingHue1$.takeUntil(iconClicks1$).subscribe(hue => icon1.style.color = `hsl(${hue}, 100%, 50%)`);
-changingHue2$.takeUntil(iconClicks2$).subscribe(hue => icon2.style.color = `hsl(${hue}, 100%, 50%)`);
+// changingHue2$.takeUntil(iconClicks2$).subscribe(hue => icon2.style.color = `hsl(${hue}, 100%, 50%)`);
 
 
 hue$.subscribe(hue => writeToSelector(Selectors.hueValue, hue));
