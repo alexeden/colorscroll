@@ -19,7 +19,16 @@
   },
   "homepage": "https://github.com/alexeden/colorscroll#readme",
   "dependencies": {
-    "rxjs": "^5.4.1"
+    "@angular/animations": "^4.3.0",
+    "@angular/common": "^4.3.0",
+    "@angular/compiler": "^4.3.0",
+    "@angular/core": "^4.3.0",
+    "@angular/forms": "^4.3.0",
+    "@angular/http": "^4.3.0",
+    "@angular/platform-browser": "^4.3.0",
+    "@angular/platform-browser-dynamic": "^4.3.0",
+    "@angular/router": "^4.3.0",
+    "rxjs": "^5.4.2"
   },
   "devDependencies": {
     "awesome-typescript-loader": "^3.2.1",

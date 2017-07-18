@@ -16,9 +16,7 @@ module.exports = {
   entry: {
     semantic: './css/semantic.less',
     styles: './css/styles.less',
-    vendor: [
-      'rxjs'
-    ],
+    vendor: './vendor.ts',
     app: './main.ts'
   },
 

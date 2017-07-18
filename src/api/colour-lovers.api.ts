@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { HSV, RGB } from 'colorscroll/shared';
+import { HSV, RGB } from '../shared';
 import { JSONP } from './jsonp';
 
 export interface ColourLoversColor {

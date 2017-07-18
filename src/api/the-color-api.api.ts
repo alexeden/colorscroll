@@ -1,5 +1,5 @@
 import { Observable } from 'rxjs';
-import { HSV, HSL, RGB, CMYK, XYZ } from 'colorscroll/shared';
+import { HSV, HSL, RGB, CMYK, XYZ } from '../shared';
 import { JSONP } from './jsonp';
 
 export type ColorApiColor<T>
