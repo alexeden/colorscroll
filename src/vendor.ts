@@ -1,3 +1,6 @@
+import 'reflect-metadata';
+import 'zone.js';
+
 import 'rxjs';
 import '@angular/animations';
 import '@angular/common';

@@ -28,9 +28,12 @@
     "@angular/platform-browser": "^4.3.0",
     "@angular/platform-browser-dynamic": "^4.3.0",
     "@angular/router": "^4.3.0",
-    "rxjs": "^5.4.2"
+    "reflect-metadata": "^0.1.10",
+    "rxjs": "^5.4.2",
+    "zone.js": "^0.8.14"
   },
   "devDependencies": {
+    "angular2-template-loader": "^0.6.2",
     "awesome-typescript-loader": "^3.2.1",
     "circular-dependency-plugin": "^3.0.0",
     "css-loader": "^0.28.4",

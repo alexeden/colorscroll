@@ -4,6 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
+const { TsConfigPathsPlugin } = require('awesome-typescript-loader');
 
 const extractLess = new ExtractTextPlugin({
   filename: "[name].[chunkhash].css"
@@ -28,7 +29,7 @@ module.exports = {
 
   resolve: {
     extensions: ['.ts', '.js', '.html', '.css'],
-    modules: ['node_modules']
+    modules: [path.resolve(__dirname, 'src'), 'node_modules']
   },
   module: {
     rules: [
@@ -48,7 +49,8 @@ module.exports = {
             options: {
               configFileName: path.resolve(__dirname, 'src', 'tsconfig.json')
             }
-          }
+          },
+          'angular2-template-loader'
         ]
       },
       {
@@ -85,6 +87,11 @@ module.exports = {
 
   plugins: [
     extractLess,
+    new TsConfigPathsPlugin({
+      baseUrl:  path.resolve(__dirname, 'src'),
+      compiler: 'typescript',
+      tsconfig: path.resolve(__dirname, 'src', 'tsconfig.json')
+    }),
     new HtmlWebpackPlugin({
       template: 'index.html'
     }),
