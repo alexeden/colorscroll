@@ -19,8 +19,6 @@
     "suppressImplicitAnyIndexErrors": true,
     "paths": {
       "colorscroll/*": [
-        "shared/*",
-        "app/*",
         "*"
       ]
     },

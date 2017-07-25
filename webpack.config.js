@@ -89,14 +89,14 @@ module.exports = {
     extractLess,
     new TsConfigPathsPlugin({
       baseUrl:  path.resolve(__dirname, 'src'),
-      compiler: 'typescript',
+      // compiler: 'typescript',
       tsconfig: path.resolve(__dirname, 'src', 'tsconfig.json')
     }),
     new HtmlWebpackPlugin({
       template: 'index.html'
     }),
     new CommonsChunkPlugin({
-      name: 'vendor',
+      name: ['vendor', 'manifest'],
       minChunks: Infinity
     }),
     new CircularDependencyPlugin({
@@ -109,6 +109,10 @@ module.exports = {
   devServer: {
     port: 4000,
     historyApiFallback: true,
+    overlay: {
+      warnings: false,
+      errors: true
+    },
     headers: {
       'Access-Control-Allow-Origin': '*',
       'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, PATCH, OPTIONS',
