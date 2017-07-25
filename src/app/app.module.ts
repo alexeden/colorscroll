@@ -1,29 +1,31 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { SharedModule } from 'shared';
+import { SharedModule } from '../shared';
 
 import { AppComponent }  from './app.component';
-import { ScrollBlockComponent, ScrollReaderDirective } from './scroll-block';
-import { TheColorApiService } from './services';
+import { HslScrollBlocksComponent, ScrollReaderDirective } from './scroll-block';
+import { TheColorApiModule } from '../api';
+import { ColorScrollService } from './services';
 
 
 @NgModule({
   imports: [
     BrowserModule,
-    SharedModule
+    SharedModule,
+    TheColorApiModule
   ],
   providers: [
-    TheColorApiService
+    ColorScrollService
   ],
   declarations: [
     AppComponent,
-    ScrollBlockComponent,
+    HslScrollBlocksComponent,
     ScrollReaderDirective
   ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {
-  constructor(
-    public theColorApi: TheColorApiService
-  ) {}
+  // constructor(
+  //   public theColorApi: TheColorApiService
+  // ) {}
 }

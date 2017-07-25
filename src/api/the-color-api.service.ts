@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
 // import { HSV, HSL, RGB, CMYK, XYZ } from 'colorscroll/shared';
-import { Color, ColorScheme, ColorSchemeMode } from './the-color-api.interfaces';
-
+// import { ColorDetails, ColorScheme, ColorSchemeMode } from './the-color-api.interfaces';
+import * as TheColorApi from './the-color-api.interfaces';
 import { Jsonp } from '@angular/http';
 
 @Injectable()
@@ -12,7 +12,7 @@ export class TheColorApiService {
     private jsonp: Jsonp
   ) {}
 
-  getColor(hex: string): Observable<Color> {
+  getColor(hex: string): Observable<TheColorApi.ColorDetails> {
     const url = `http://www.thecolorapi.com/id`;
     return this.jsonp.request(url, {
       params: {
@@ -22,7 +22,7 @@ export class TheColorApiService {
     })
     .map(response => response.json());
   }
-  getColorScheme(hex: string, count = 5, scheme = ColorSchemeMode.Monochrome): Observable<ColorScheme> {
+  getColorScheme(hex: string, count = 5, scheme = TheColorApi.ColorSchemeMode.Monochrome): Observable<TheColorApi.ColorScheme> {
     const url = `http://www.thecolorapi.com/scheme`;
     return this.jsonp.request(url, {
       params: {

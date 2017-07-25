@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 
 @NgModule({
   exports: [
     CommonModule,
-    HttpModule
+    HttpModule,
+    JsonpModule
   ]
 })
 export class SharedModule {}
-export * from './color';
-export * from './constants';
-export * from './helpers';

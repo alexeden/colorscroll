@@ -1,2 +1,3 @@
-export * from './colour-lovers.api';
-export * from './the-color-api.api';
+export * from './the-color-api.interfaces';
+export * from './the-color-api.service';
+export * from './api.module';

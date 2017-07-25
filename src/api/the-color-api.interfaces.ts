@@ -22,7 +22,7 @@ export interface ColorImage {
   named: string;
 }
 
-export interface Color {
+export interface ColorDetails {
   cmyk: ColorApiColor<CMYK>;
   hsl: ColorApiColor<HSL>;
   hsv: ColorApiColor<HSV>;
@@ -47,7 +47,7 @@ export interface Color {
 export interface ColorScheme {
   mode: ColorScheme;
   count: number;
-  colors: Color[];
-  seed: Color;
+  colors: ColorDetails[];
+  seed: ColorDetails;
   image: ColorImage;
 }
