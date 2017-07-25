@@ -20,9 +20,9 @@ export class ScrollReaderDirective implements OnInit, OnDestroy {
 
   @Input('scrollReader') axis = ScrollAxis.Y;
   @Input() throttle = 1;
-  @Input() throttleWithShift = 200;
-  @Input() clampRange = 50;
-  @Input() clampRangeWithShift = 2;
+  @Input() throttleWithShift = 100;
+  @Input() clampRange = 1;
+  @Input() clampRangeWithShift = 1;
   @Output() scroll = new Subject<number>();
 
   private scrollEvents$: Observable<MouseWheelEvent>;
