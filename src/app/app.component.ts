@@ -8,12 +8,7 @@ import { LiveColorService } from './services';
   <div class="ui three column middle aligned centered grid">
     <div class="ui eight wide computer ten wide tablet twelve wide mobile column">
       <div class="ui segments raised scroll-controls-wrapper">
-
-        <h1 class="ui top attached huge header center aligned no-border secondary">
-          <i id="color-scroll-icon-1" class="color lens icon"></i>
-          <div id="color-scroll-icon-text" class="content">ColorScroll</div>
-        </h1>
-
+        <color-scroll-header></color-scroll-header>
         <hsl-scroll-blocks></hsl-scroll-blocks>
 
         <div id="color-details-widget" class="ui segment attached bottom center aligned secondary no-border">
