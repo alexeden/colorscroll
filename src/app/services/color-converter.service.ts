@@ -14,11 +14,19 @@ export class ColorConverterService {
   hsl = convert.hsl;
   keyword = convert.keyword;
 
-  hslToTuple({h, s, l}: HSL): Triplet {
+  hslToTriplet({h, s, l}: HSL): Triplet {
     return [h, s, l];
   }
 
-  rgbToTuple({r, g, b}: RGB): Triplet {
+  rgbToTriplet({r, g, b}: RGB): Triplet {
     return [r, g, b];
+  }
+
+  tripletToRgb([r, g, b]: Triplet): RGB {
+    return {r, g, b};
+  }
+
+  tripletToHsl([h, s, l]: Triplet): HSL {
+    return {h, s, l};
   }
 }
