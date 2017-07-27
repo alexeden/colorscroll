@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
-// import { HSV, HSL, RGB, CMYK, XYZ } from 'colorscroll/shared';
-// import { ColorDetails, ColorScheme, ColorSchemeMode } from './the-color-api.interfaces';
 import * as TheColorApi from './the-color-api.interfaces';
 import { Jsonp } from '@angular/http';
 

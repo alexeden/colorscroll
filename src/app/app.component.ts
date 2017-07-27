@@ -13,12 +13,7 @@ import { Component } from '@angular/core';
 
         <div id="color-details-widget" class="ui segment attached bottom center aligned secondary no-border">
         </div>
-
-        <div class="ui segment attached bottom center aligned secondary no-border">
-          <!-- HSL string value -->
-          <code class="hsl-string">{{hslString$ | async}}</code>
-          <code class="hex-string">#??????</code>
-        </div>
+        <live-css></live-css>
       </div>
     </div>
   </div>
