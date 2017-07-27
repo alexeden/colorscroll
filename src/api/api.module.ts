@@ -14,3 +14,5 @@ import { TheColorApiService } from './the-color-api.service';
   ]
 })
 export class TheColorApiModule {}
+export * from './the-color-api.interfaces';
+export * from './the-color-api.service';

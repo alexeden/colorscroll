@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Subject, ConnectableObservable, Observable } from 'rxjs';
-import { HSL } from '../../shared';
+import { HSL, ColorConverterService } from '../../shared';
 import { TheColorApiService } from '../../api';
-import { ColorConverterService } from './color-converter.service';
 
 export type HslOperation = (color: HSL) => HSL;
 

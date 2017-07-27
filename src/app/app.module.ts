@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { SharedModule } from '../shared';
 
 import { AppComponent }  from './app.component';
-import { HslScrollBlocksComponent, ScrollReaderDirective } from './scroll-block';
+import { HslScrollBlocksComponent } from './scroll-block';
 import { TheColorApiModule } from '../api';
-import { LiveColorService, ColorDetailsService, ColorConverterService } from './services';
+import { LiveColorService, ColorDetailsService } from './services';
 import { ColorScrollLayoutModule } from './layout';
 
 @NgModule({
@@ -17,13 +17,11 @@ import { ColorScrollLayoutModule } from './layout';
   ],
   providers: [
     LiveColorService,
-    ColorDetailsService,
-    ColorConverterService
+    ColorDetailsService
   ],
   declarations: [
     AppComponent,
-    HslScrollBlocksComponent,
-    ScrollReaderDirective
+    HslScrollBlocksComponent
   ],
   bootstrap: [ AppComponent ]
 })

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as convert from 'color-convert';
-import { RGB, HSL } from '../../shared';
+import { RGB, HSL } from './color';
 
 type Triplet = [number, number, number];
 

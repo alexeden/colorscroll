@@ -12,7 +12,7 @@ export class TheColorApiService {
     private jsonp: Jsonp
   ) {}
 
-  getColor(hex: string): Observable<TheColorApi.ColorDetails> {
+  getColorByHex(hex: string): Observable<TheColorApi.ColorDetails> {
     const url = `http://www.thecolorapi.com/id`;
     return this.jsonp.request(url, {
       params: {
