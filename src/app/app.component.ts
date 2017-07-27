@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   template: `
   <div
     class="ui three column middle aligned centered grid"
-    [colorScrollGradientBackground]="50">
+    [colorScrollGradientBackground]="20">
     <div class="ui eight wide computer ten wide tablet twelve wide mobile column">
       <div class="ui segments raised scroll-controls-wrapper">
         <color-scroll-header></color-scroll-header>

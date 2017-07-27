@@ -27,27 +27,3 @@ DO NOT subscribe to things in the `constructor`s of your components. I should be
 DO put any necessary subscribing inside the `ngOnInit` (or similar) life-cycle hook of your component. Doing so will also make your components much easier to test.
 
 General guidance:
-- If you're going to be integrating static (non-observable) values within the definitions of reactive values, like say, of an component's `@Input()`, be sure to do so in such a way that the static value is evaluated with each execution of the reactive value wrapper
-
-```
-@Input() selectedAxis: 'x'|'y';
-point$: Observable<{ x: number, y: number }>;
-selectedAxisValue$: Observable<number>;
-
-ngOnInit() {
-  // Assume this.point$ is already defined
-
-  // Bad:
-  // Doing it like this means that we will always be
-  // plucking the axis that was set when this.selectedAxisValue$
-  // gets instantiated, even if the value of selectedAxis changes
-  this.selectedAxisValue$ = this.point$.pluck(this.selectedAxis);
-
-  // Good:
-  // Any usage of the selectedAxis input should lazily evaluated,
-  // which is a fancy way of saying it should be used within a function
-  this.selectedAxisValue$ = this.point$.map(point => point[this.selectedAxis]);
-  // Now, the value of selectedAxis get evaluated each time the
-  // function inside .map is called
-}
-```
