@@ -1,11 +1,11 @@
-import { Component, Renderer2, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { LiveColorService } from './services';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'colorscroll-app',
   template: `
-  <div class="ui three column middle aligned centered grid">
+  <div
+    class="ui three column middle aligned centered grid"
+    [colorScrollGradientBackground]="50">
     <div class="ui eight wide computer ten wide tablet twelve wide mobile column">
       <div class="ui segments raised scroll-controls-wrapper">
         <color-scroll-header></color-scroll-header>
@@ -24,22 +24,4 @@ import { LiveColorService } from './services';
   </div>
   `
 })
-export class AppComponent implements OnInit {
-
-  hslString$: Observable<string>;
-
-  constructor(
-    private colorService: LiveColorService,
-    private renderer: Renderer2
-  ) {
-    this.hslString$ = this.colorService.hslString$;
-  }
-
-  ngOnInit() {
-    this.hslString$
-      .subscribe(hsl => {
-        this.renderer.setStyle(window.document.body, 'background-color', hsl);
-      });
-  }
-
-}
+export class AppComponent {}
