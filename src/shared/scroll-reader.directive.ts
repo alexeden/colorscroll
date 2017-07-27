@@ -7,6 +7,7 @@ import { Directive, ElementRef, Input, Output, OnInit, OnDestroy } from '@angula
 export class ScrollReaderDirective implements OnInit, OnDestroy {
 
   @Input('scrollReader') axis: 'x'|'y' = 'x';
+  @Input() invert = false;
   @Input() throttle = 1;
   @Input() throttleWithShift = 100;
   @Output() scroll = new Subject<number>();
@@ -33,6 +34,7 @@ export class ScrollReaderDirective implements OnInit, OnDestroy {
         const normalDelta = delta < 0 ? -1 : 1;
         return Observable.of(normalDelta).delay(throttle);
       })
+      .map(value => value * (this.invert ? -1 : 1))
       .takeUntil(this.unsubscribe$)
       .subscribe(this.scroll);
   }

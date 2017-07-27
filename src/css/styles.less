@@ -1,6 +1,3 @@
-body {
-	transition: background-color .77s;
-}
 
 .keyframes(@name; @arguments) {
 	@-moz-keyframes @name { @arguments(); }
@@ -38,13 +35,26 @@ body {
 .scroll-control:focus,
 .scroll-control:hover {
   outline: 0;
-  background-color: hsl(48, 29%, 97%) !important;
+  background-color: rgba(0, 0, 0, 0.02) !important;
 }
 .scroll-control {
+	user-select: none;
   border: none !important;
+
+	i.icon {
+		border-radius: 10%;
+
+		&:focus,
+		&:hover {
+			outline: 0;
+			background-color: rgba(0, 0, 0, 0.05) !important;
+			cursor: pointer;
+		}
+
+	}
 }
 .scroll-control * {
-  pointer-events: none;
+  // pointer-events: none;
 }
 
 .slide-out {

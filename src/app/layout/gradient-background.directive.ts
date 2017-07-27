@@ -25,6 +25,7 @@ export class ColorScrollGradientBackgroundDirective implements OnInit, OnDestroy
   ngOnInit() {
     this.liveColorService.hex$
       .takeUntil(this.unsubscribe$)
+      .distinctUntilChanged()
       // Prefix each incoming hex value with a '#'
       .map(hex => `#${hex}`)
       .scan((hexList, hex) => [hex, ...hexList].slice(0, this.stops), [])

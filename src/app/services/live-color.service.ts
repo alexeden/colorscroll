@@ -17,7 +17,6 @@ export class LiveColorService {
     public colorApi: TheColorApiService,
     private converter: ColorConverterService
   ) {
-    window['convert'] = this.converter;
     this.hsl$
       = this.hslUpdates$
           .startWith((hsl: HSL) => hsl)
@@ -32,7 +31,7 @@ export class LiveColorService {
     this.hsl$.connect();
   }
 
-  apply(operation: HslOperation) {
+  applyHslUpdate(operation: HslOperation) {
     this.hslUpdates$.next(operation);
   }
 
