@@ -15,7 +15,8 @@ export class TheColorApiService {
     return this.jsonp.request(url, {
       params: {
         format: 'json',
-        hex: hex.replace('#', '')
+        hex: hex.replace('#', ''),
+        callback: 'JSONP_CALLBACK'
       }
     })
     .map(response => response.json());
@@ -27,6 +28,7 @@ export class TheColorApiService {
         format: 'json',
         hex: hex.replace('#', ''),
         mode: scheme,
+        callback: 'JSONP_CALLBACK',
         count
       }
     })

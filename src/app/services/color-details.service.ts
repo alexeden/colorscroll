@@ -8,9 +8,7 @@ export class ColorDetailsService {
   private colorDetailsResponse = new Subject<ColorDetails>();
   colorDetailsHistory$: ConnectableObservable<ColorDetails>;
 
-  constructor(
-    private theColorApi: TheColorApiService
-  ) {
+  constructor(private theColorApi: TheColorApiService) {
     this.colorDetailsHistory$ = this.colorDetailsResponse.publishReplay();
   }
 
