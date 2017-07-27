@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ColorScrollService } from '../services';
+import { LiveColorService } from '../services';
 // import { ScrollReaderEvent } from './scroll-reader.directive';
 
 @Component({
@@ -75,7 +75,7 @@ export class HslScrollBlocksComponent {
   lightness$: Observable<number>;
 
   constructor(
-    private colorService: ColorScrollService
+    private colorService: LiveColorService
   ) {
     this.hue$ = this.colorService.hsl$.map(color => color.h);
     this.saturation$ = this.colorService.hsl$.map(color => color.s);
@@ -86,7 +86,7 @@ export class HslScrollBlocksComponent {
     this.colorService.apply(
       hsl => ({
         ...hsl,
-        h: ColorScrollService.circular(0, 360, hsl.h + delta)
+        h: LiveColorService.circular(0, 360, hsl.h + delta)
       })
     );
   }
@@ -94,7 +94,7 @@ export class HslScrollBlocksComponent {
     this.colorService.apply(
       hsl => ({
         ...hsl,
-        s: ColorScrollService.clamp(0, 100, hsl.s + delta)
+        s: LiveColorService.clamp(0, 100, hsl.s + delta)
       })
     );
   }
@@ -102,7 +102,7 @@ export class HslScrollBlocksComponent {
     this.colorService.apply(
       hsl => ({
         ...hsl,
-        l: ColorScrollService.clamp(0, 100, hsl.l + delta)
+        l: LiveColorService.clamp(0, 100, hsl.l + delta)
       })
     );
   }

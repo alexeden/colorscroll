@@ -6,7 +6,7 @@ import { TheColorApiService } from '../../api';
 export type HslOperation = (color: HSL) => HSL;
 
 @Injectable()
-export class ColorScrollService {
+export class LiveColorService {
   hsl$: ConnectableObservable<HSL>;
   hslString$: Observable<string>;
 

@@ -1,6 +1,6 @@
 import { Component, Renderer2, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ColorScrollService } from './services';
+import { LiveColorService } from './services';
 
 @Component({
   selector: 'colorscroll-app',
@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
   hslString$: Observable<string>;
 
   constructor(
-    private colorService: ColorScrollService,
+    private colorService: LiveColorService,
     private renderer: Renderer2
   ) {
     this.hslString$ = this.colorService.hslString$;

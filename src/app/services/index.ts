@@ -1,1 +1,1 @@
-export * from './color-scroll.service';
+export * from './live-color.service';
