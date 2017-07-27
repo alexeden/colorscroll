@@ -5,7 +5,7 @@ import { SharedModule } from '../shared';
 import { AppComponent }  from './app.component';
 import { HslScrollBlocksComponent, ScrollReaderDirective } from './scroll-block';
 import { TheColorApiModule } from '../api';
-import { LiveColorService } from './services';
+import { LiveColorService, ColorDetailsService, ColorConverterService } from './services';
 
 
 @NgModule({
@@ -15,7 +15,9 @@ import { LiveColorService } from './services';
     TheColorApiModule
   ],
   providers: [
-    LiveColorService
+    LiveColorService,
+    ColorDetailsService,
+    ColorConverterService
   ],
   declarations: [
     AppComponent,
@@ -24,8 +26,4 @@ import { LiveColorService } from './services';
   ],
   bootstrap: [ AppComponent ]
 })
-export class AppModule {
-  // constructor(
-  //   public theColorApi: TheColorApiService
-  // ) {}
-}
+export class AppModule {}
