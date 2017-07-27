@@ -8,6 +8,7 @@ import { TheColorApiModule } from '../api';
 import { LiveColorService, ColorDetailsService } from './services';
 import { ColorScrollLayoutModule } from './layout';
 import { ColorScrollLiveCssComponent } from './live-css';
+import { ColorScrollColorDetailsComponent } from './color-details';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { ColorScrollLiveCssComponent } from './live-css';
   declarations: [
     AppComponent,
     HslScrollBlocksComponent,
-    ColorScrollLiveCssComponent
+    ColorScrollLiveCssComponent,
+    ColorScrollColorDetailsComponent
   ],
   bootstrap: [ AppComponent ]
 })

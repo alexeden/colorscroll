@@ -10,9 +10,7 @@ import { Component } from '@angular/core';
       <div class="ui segments raised scroll-controls-wrapper">
         <color-scroll-header></color-scroll-header>
         <hsl-scroll-blocks></hsl-scroll-blocks>
-
-        <div id="color-details-widget" class="ui segment attached bottom center aligned secondary no-border">
-        </div>
+        <color-details></color-details>
         <live-css></live-css>
       </div>
     </div>
