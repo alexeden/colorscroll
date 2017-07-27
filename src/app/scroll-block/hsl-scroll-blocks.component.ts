@@ -86,7 +86,7 @@ export class HslScrollBlocksComponent {
     this.colorService.apply(
       hsl => ({
         ...hsl,
-        h: LiveColorService.circular(0, 360, hsl.h + delta)
+        h: HslScrollBlocksComponent.circular(0, 360, hsl.h + delta)
       })
     );
   }
@@ -94,7 +94,7 @@ export class HslScrollBlocksComponent {
     this.colorService.apply(
       hsl => ({
         ...hsl,
-        s: LiveColorService.clamp(0, 100, hsl.s + delta)
+        s: HslScrollBlocksComponent.clamp(0, 100, hsl.s + delta)
       })
     );
   }
@@ -102,8 +102,19 @@ export class HslScrollBlocksComponent {
     this.colorService.apply(
       hsl => ({
         ...hsl,
-        l: LiveColorService.clamp(0, 100, hsl.l + delta)
+        l: HslScrollBlocksComponent.clamp(0, 100, hsl.l + delta)
       })
     );
   }
+
+  private static circular(min: number, max: number, value: number): number {
+    return value <= min
+      ? value + max
+      : value % max;
+  }
+
+  private static clamp(min: number, max: number, value: number): number {
+    return Math.max(min, Math.min(value, max));
+  }
+
 }
