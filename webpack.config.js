@@ -1,5 +1,6 @@
 const path = require('path');
 
+const { ContextReplacementPlugin } = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -87,6 +88,10 @@ module.exports = {
 
   plugins: [
     extractLess,
+    new ContextReplacementPlugin(
+      /angular(\\|\/)core(\\|\/)@angular/,
+      path.resolve(__dirname, '../src')
+    ),
     new TsConfigPathsPlugin({
       baseUrl:  path.resolve(__dirname, 'src'),
       // compiler: 'typescript',
